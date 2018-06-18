@@ -1,0 +1,36 @@
+<div class="header">
+    <span>Edit customer</span>
+  </div>
+  
+  <div class="add-customer mat-card" *ngIf="customer">
+    <div class="form">
+  
+      <mat-form-field>
+        <input matInput placeholder="First name" [(ngModel)]="customer.firstName">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Last name" [(ngModel)]="customer.lastName">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="customer.email">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Phone" [(ngModel)]="customer.phone">
+      </mat-form-field>
+                  
+      <mat-form-field>
+        <mat-select placeholder="Company" [(value)]="selected">
+          <mat-option value="{{comp.id}}" *ngFor="let comp of companys">{{comp.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="add">
+          <button matInput mat-raised-button mat-dialog-close (click)="saveCustomer()">Save</button>
+      </div>
+    
+    </div>
+  </div>
+  

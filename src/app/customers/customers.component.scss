@@ -1,0 +1,102 @@
+.header{
+    background: #ffffff;
+    span:first-of-type{
+        color: #1f3aa9;
+        font-weight: bold;
+        font-size: 22px;
+    }
+    span{
+        font-size: 19px;
+        margin-right: 35px;
+    }
+    .btns{
+        float: right;
+        margin-top: -5.8px;
+        button {
+            outline: none;
+            margin-left: 15px;
+            padding: 5px 16px;
+            height: 40px;
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 13.5px;
+            font-weight: bold;
+            cursor: pointer;
+            -webkit-transition: all 0.25s ease;
+            transition: all 0.25s ease;
+        }
+        .export{
+            background: #fff;
+            border: 2px solid #1f3aa9;
+            color: #1f3aa9;
+        }
+        .export:hover{
+            color: white;
+            background: #1f3aa9;
+        }
+        .create{
+            background: #fff;
+            border: 2px solid #1ECD97;
+            color: #1ECD97;
+        }
+        .create:hover {
+            color: white;
+            background: #1ECD97;
+        }
+        i{
+            font-size: 16px;
+            vertical-align: bottom;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    }
+    
+}
+.dataTable {
+    margin-top: 30px;
+        table{
+            width: 100%;
+        }
+        td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+            border-color: silver;
+        }
+        .select{
+            margin-right: 30px;
+        }
+        .filters{
+            display: inline;
+        }
+        .clear{
+            width: 30px;
+            margin-left: 30px;
+        }
+        .filters > mat-form-field {
+            width: calc(100% - 270px);
+        }
+        .last_td{
+            width: 125px;
+            i{
+                color: #787a7b;
+                background-color: #ebeff1;
+                float: right;
+                margin-left: 10px;
+                font-size: 20px;
+                padding: 4px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+            i:hover{
+                background-color: #d2d7da;
+            }
+        }
+        
+}
+
+.cursor{
+    cursor: pointer;
+    transition: 0.3s;
+}
+.cursor:hover{
+    color: #1f3aa9;
+    font-weight: bold;
+}

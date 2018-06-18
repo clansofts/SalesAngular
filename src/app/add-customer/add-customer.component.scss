@@ -1,0 +1,21 @@
+.header{
+    background: #ffffff;
+    span{
+        color: #1ECD97;
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
+.add-customer {
+    margin-top: 30px;
+    .form{
+        display: flex;
+        flex-direction: column;
+        button{
+            background-color: #1ECD97;
+            color: #ffffff;
+        }
+    }
+}
+  

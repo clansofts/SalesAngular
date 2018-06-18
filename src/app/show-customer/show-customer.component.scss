@@ -1,0 +1,41 @@
+.headline{
+    color: #1ECD97;
+    font-size: 18px;
+    font-weight: bold;
+}
+mat-list-item span{
+    font-weight: bold
+}
+mat-icon{
+    color: #1ECD97;
+}
+
+.header{
+    background: #ffffff;
+    margin-bottom: 30px;
+    span{
+        color: #1ECD97;
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+.comments{
+    padding-left: 15px;
+}
+button.me.mat-raised-button{   
+    background-color: #1ECD97;
+    color: #ffffff;
+}
+mat-icon.ico.mat-list-icon.mat-icon{
+    font-size: 19px;
+}
+button.add.mat-button{
+    color: #1ECD97;
+}
+.mat-badge-content{
+    background-color: #1ECD97;
+    color: #ffffff;
+}
+.delete{
+    margin-left: 15px;
+}

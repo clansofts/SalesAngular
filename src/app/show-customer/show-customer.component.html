@@ -1,0 +1,41 @@
+
+<div class="header">
+  <span>Customer card</span>
+</div>
+
+<mat-card *ngIf="customer">
+  <mat-list>
+    <mat-list-item>
+      <h4 mat-line><span>Full name:</span> {{customer.firstName +" "+ customer.lastName}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Company:</span> {{customer.company.name}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Email:</span> {{customer.email}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Phone:</span> {{customer.phone}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <button *ngIf="customer.comments" mat-raised-button (click)="openComments()" class="me" matBadge="{{customer.comments.length}}" matBadgePosition="after">Comments</button>
+      <button *ngIf="customer" mat-dialog-close mat-raised-button (click)="deleteCustomer(customer.id)" color="warn" class="delete">Delete</button>
+    </mat-list-item>
+  </mat-list>
+  <div class="comments" *ngIf="showComments">
+    <mat-list>
+      <mat-list-item *ngFor="let comment of customer.comments">
+        <mat-icon mat-list-icon>play_arrow</mat-icon>
+        <h5 mat-line>{{comment.text}}</h5>
+        <p mat-line> {{comment.createDate | date}} </p>
+      </mat-list-item>
+      <mat-list-item>
+          <mat-icon mat-list-icon class="ico">create</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="Add new comment" [(ngModel)]="newComment">
+          </mat-form-field>
+          <button mat-button (click)="addComment(customer.id)" class="add">Add</button>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-card>
