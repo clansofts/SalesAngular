@@ -5,9 +5,12 @@ import { CustomersComponent } from './customers/customers.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { ShowCustomerComponent } from './show-customer/show-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { AppComponent } from './app.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', component: CustomersComponent},
+  { path: '', component: HomePageComponent},
+  { path: 'customers-page', component: CustomersComponent},
   { path: 'add-customer', component: AddCustomerComponent },
   { path: 'edit-customer', component: EditCustomerComponent },
   { path: 'show-customer', component: ShowCustomerComponent }

@@ -1,12 +1,12 @@
 var Sequelize = require('sequelize');
-var {connection}  = require('./DataAccessConnection');
-var {Company}  = require('./companyModel');
-var {Comments}  = require('./commentModel');
+var connect  = require('./DataAccessConnection');
+var Company  = require('./companyModel');
+var Comments  = require('./commentModel');
 
 class Customer {
 
   constructor() {
-    this.Customer = connection.define('customer', {
+    this.model = connect.connection.define('customer', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -19,39 +19,39 @@ class Customer {
       phone: Sequelize.TEXT
     });
 
-    this.Customer.belongsTo(Company, { foreignKey: 'companyID' });
-    Company.hasMany(this.Customer, { foreignKey: 'id' });
+    this.model.belongsTo(Company.model, { foreignKey: 'companyID' });
+    Company.model.hasMany(this.model, { foreignKey: 'id' });
 
-    Comments.belongsTo(this.Customer, { foreignKey: 'customerID', });
-    this.Customer.hasMany(Comments, { foreignKey: 'id' ,onDelete: 'CASCADE', hooks: true});
+    Comments.model.belongsTo(this.model, { foreignKey: 'customerID', });
+    this.model.hasMany(Comments.model, { foreignKey: 'id' ,onDelete: 'CASCADE', hooks: true});
 
   }
   
   find_all(){
-    return this.Customer.findAll({
-      include : [{ model: Company, attributes: ['name']}]
+    return this.model.findAll({
+      include : [{ model: Company.model, attributes: ['name']}]
     });
   }
   
   destroy(id){
-    return this.Customer.destroy({
+    return this.model.destroy({
       where : {id: id}
     });
   }
 
   find(id){
-    return this.Customer.find({
+    return this.model.find({
       where : {id: id},
-      include : [{ model: Company, attributes: ['name']}]
+      include : [{ model: Company.model, attributes: ['name']}]
     })
   }
 
   create(customer){
-    return this.Customer.create(customer);
+    return this.model.create(customer);
   }
 
   update(customer){
-    return this.Customer.update({ 
+    return this.model.update({ 
       firstName: customer.firstName, 
       lastName: customer.lastName, 
       phone: customer.phone, 
@@ -66,9 +66,9 @@ class Customer {
   }
 
   search(query){
-    return this.Customer.findAll({
+    return this.model.findAll({
       where : {[query.filterBy] : { [Sequelize.Op.like]: '%' + query.value + '%'}},
-      include : [{ model: Company, attributes: ['name']}]
+      include : [{ model: Company.model, attributes: ['name']}]
     })
   }
 }

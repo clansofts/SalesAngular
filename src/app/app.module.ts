@@ -15,13 +15,17 @@ import { MatBadgeModule,MatListModule,MatIconModule,MatButtonModule,MatSnackBarM
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { ShowCustomerComponent } from './show-customer/show-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { HeaderComponent } from './header/header.component';
+import { HomePageComponent } from './home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
     AddCustomerComponent,
     ShowCustomerComponent,
-    EditCustomerComponent
+    EditCustomerComponent,
+    HeaderComponent,
+    HomePageComponent
     
     ],
   imports: [

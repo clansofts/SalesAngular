@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer';
-import { CustomersService } from '../customers.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from '../company';
+import { CompanysService } from '../companys.service';
+import { CustomersService } from '../customers.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -12,11 +13,11 @@ import { Company } from '../company';
 export class AddCustomerComponent implements OnInit {
   customer: Customer =new Customer();
   companys :Array<Company>;
-  constructor(private customersService : CustomersService, private router : Router) { 
-      this.companys = this.customersService.companys;
-      this.customersService.companysObservable.subscribe((data)=>{
+  constructor(private companysService : CompanysService, private customersService : CustomersService, private router : Router) { 
+      this.companysService.getCompanys();
+      this.companys = this.companysService.companys;
+      this.companysService.companysObservable.subscribe((data)=>{
       this.companys = data;
-      console.log(data);
     }); 
   }
 
@@ -24,7 +25,7 @@ export class AddCustomerComponent implements OnInit {
   }
 
   addNewCustomer(){
-    this.customersService.addNewCustomer(this.customer);
+    this.customersService.add(this.customer);
   }
 
 }

@@ -37,7 +37,7 @@ export class ShowCustomerComponent implements OnInit {
 
   
   deleteCustomer(id){
-    if(confirm('Sure you want delete?')) this.customersService.deleteCustomer(id);
+    if(confirm('Sure you want delete?')) this.customersService.delete(id);
   }
   
 }

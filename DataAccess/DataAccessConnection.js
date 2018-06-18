@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 
-class Connection {
+class DataAccess {
 
     constructor() {
       this.connection = new Sequelize('angusales', 'root', '', {
@@ -22,6 +22,6 @@ class Connection {
   
   }
   
-  const connection = new Connection();
-  module.exports = connection;
+  const da = new DataAccess();
+  module.exports = da;
   

@@ -1,11 +1,11 @@
 var Sequelize = require('sequelize');
-var {connection}  = require('./DataAccessConnection');
-var {Customer}  = require('./customerModel');
+var connect  = require('./DataAccessConnection');
+var Customer  = require('./customerModel');
 
 class Company {
 
   constructor() {
-    this.Company = connection.define('company', {
+    this.model = connect.connection.define('company', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true
@@ -13,6 +13,11 @@ class Company {
       name : Sequelize.TEXT,
       address : Sequelize.TEXT,
       country : Sequelize.TEXT,
+    });
+  }
+
+  find_all(){
+    return this.model.findAll({
     });
   }
 

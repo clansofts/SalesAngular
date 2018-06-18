@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer';
 import { CustomersService } from '../customers.service';
 import { Company } from '../company';
+import { CompanysService } from '../companys.service';
 
 @Component({
   selector: 'app-edit-customer',
@@ -12,9 +13,13 @@ export class EditCustomerComponent implements OnInit {
   customer: Customer;
   companys :Array<Company>;
   selected :string ;
-  constructor(private customersService : CustomersService) {
+  constructor(private companysService : CompanysService , private customersService : CustomersService) {
+    this.companysService.getCompanys();
+    this.companys = this.companysService.companys;
+    this.companysService.companysObservable.subscribe((data)=>{
+      this.companys = data;
+    }); 
     this.customer = this.customersService.customer;
-    this.companys = this.customersService.companys;
     this.selected = this.customer.companyID.toString();
   }
 
@@ -23,7 +28,7 @@ export class EditCustomerComponent implements OnInit {
 
   saveCustomer(){
     this.customer.companyID = parseInt(this.selected);
-    this.customersService.saveCustomer(this.customer);
+    this.customersService.saveChild(this.customer);
   }
 
 }

@@ -1,9 +1,9 @@
 var Sequelize = require('sequelize');
-var {connection}  = require('./DataAccessConnection');
+var connect  = require('./DataAccessConnection');
 
 class Comments {
   constructor() {
-    this.Comments = connection.define('comment', {
+    this.model = connect.connection.define('comment', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -13,6 +13,22 @@ class Comments {
       customerID : Sequelize.INTEGER,
       createDate	: Sequelize.DATE,
     });
+  }
+
+  find_all(id){
+    return this.model.findAll({
+      where : {customerID : id},
+    });
+  }
+  
+  creare(comment){
+    return this.model.create(comment);
+  }
+
+  find(id){
+    return this.model.find({
+      where : {id: id}
+    })
   }
 
 }

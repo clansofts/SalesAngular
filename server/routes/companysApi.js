@@ -1,13 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-var {Company} = require('../../DataAccess/companyModel');
+var Company = require('../../DataAccess/companyModel');
 
 
 /* GET api listing. */
 router.get('/', (req, res) => { 
-  Company.findAll({
-    }).then( (data)=>{
+  Company.find_all().then( (data)=>{
       res.send(JSON.stringify(data));
     } , (err)=>{
       console.error(err);

@@ -1,15 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-var {Customer} = require('../../DataAccess/customerModel');
-var {Comments} = require('../../DataAccess/commentModel');
+var Comments = require('../../DataAccess/commentModel');
 
 
 /* GET api listing. */
 router.get('/:id', (req, res) => { 
-    Comments.findAll({
-      where : {customerID : req.params.id},
-    }).then( (data)=>{
+    Comments.find_all(req.params.id).then( (data)=>{
       res.send(data);
     } , (err)=>{
       console.error(err);
@@ -17,13 +14,9 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {  
-  var comment = req.body.comment;
-
-  Comments.create(comment).then((data) => {
-    Comments.find({
-      where : {id: data.id}
-    }).then( (data)=>{
+router.post('/', (req, res) => {
+  Comments.create(req.body.comment).then((data) => {
+    Comments.find(data.id).then( (data)=>{
       res.send(data);
     } , (err)=>{
       console.error(err);

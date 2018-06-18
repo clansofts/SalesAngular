@@ -27,23 +27,11 @@ export class CustomersComponent implements OnInit {
   }
   
   ngOnInit() {
-  }
-
-  openAddCustomer() {
-    const dialogRef = this.dialog.open(AddCustomerComponent, {
-      height: '540px',
-      width:'460px'
-    });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.snackBar.open("Inserted new customer", "OK", {
-    //     duration: 3000,
-    //   });
-    // });
+    this.customersService.get();
   }
 
   openShowCustomer(customer : Customer) {
-    this.customersService.setCustomer(customer);
+    this.customersService.setChild(customer);
     const dialogRef = this.dialog.open(ShowCustomerComponent, {
       height: '425px',
       width:'650px'
@@ -51,7 +39,8 @@ export class CustomersComponent implements OnInit {
   }
 
   openEditCustomer(customer : Customer) {
-    this.customersService.setCustomer(customer);
+    var newCustomer = JSON.parse(JSON.stringify(customer)); //create new customer
+    this.customersService.setChild(newCustomer);
     const dialogRef = this.dialog.open(EditCustomerComponent, {
       height: '540px',
       width:'460px'
@@ -59,38 +48,17 @@ export class CustomersComponent implements OnInit {
   }
 
   filterAll(){
-    this.customersService.searchCustomers(this.selectedValue ,this.selectedFilter);
-  }
-
-  exportToCsv(){
-    let csvContent = "data:text/csv;charset=utf-8,";
-    let row = " ID , First name , Last name , Company ID , Email , Phone ";
-    csvContent += row + "\r\n";
-    this.customers.forEach(function(rowArray){
-      row = rowArray.id + "," +
-            rowArray.firstName + "," +
-            rowArray.lastName + "," +
-            rowArray.companyID + "," + 
-            rowArray.email + "," +
-            rowArray.phone.toString();
-      csvContent += row + "\r\n";
-    }); 
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "customers.csv");
-    link.innerHTML= "Click Here to download";
-    document.body.appendChild(link); // Required for FF
-
-    link.click(); 
+    var filterObj = {value : this.selectedValue , filter : this.selectedFilter};
+    this.customersService.search(filterObj);
   }
 
   filterCompany(value :string, company:string){
-    this.customersService.searchCustomers(value , company);
+    var filterObj = {value : value , filter : company};
+    this.customersService.search(filterObj);
   }
 
   clearAll(){
-    this.customersService.getCustomers();
+    this.customersService.get();
     this.selectedValue = "";
     this.snackBar.open("All filters are clear", "OK", {
       duration: 3000,

@@ -1,0 +1,12 @@
+<div class="header">
+  <mat-card>
+    <span routerLink="./">AngulSales</span>
+    <span routerLink [ngClass]="{'curPage': router.url == '/'}">Home</span>
+    <span routerLink="/" [ngClass]="{'curPage': router.url == '/companys-page'}">Companys</span>
+    <span routerLink="/customers-page" [ngClass]="{'curPage': router.url == '/customers-page'}">Customers</span>
+    <div class="btns" *ngIf="(router.url == '/customers-page')">
+      <button class="export" (click)="exportCustomersToCsv()"><i class="material-icons">save_alt</i>Export to CSV</button>
+      <button class="create" (click)="openAddCustomer()"><i class="material-icons">add</i>Create Customer</button>
+    </div>
+  </mat-card>
+</div>
