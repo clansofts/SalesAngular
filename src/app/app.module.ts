@@ -17,6 +17,10 @@ import { ShowCustomerComponent } from './show-customer/show-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { CompanysComponent } from './companys/companys.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
+import { ShowCompanyComponent } from './show-company/show-company.component';
+import { EditCompanyComponent } from './edit-company/edit-company.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,11 @@ import { HomePageComponent } from './home-page/home-page.component';
     ShowCustomerComponent,
     EditCustomerComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    CompanysComponent,
+    AddCompanyComponent,
+    ShowCompanyComponent,
+    EditCompanyComponent
     
     ],
   imports: [

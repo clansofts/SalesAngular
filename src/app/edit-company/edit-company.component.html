@@ -1,0 +1,39 @@
+<div class="header">
+  <span>Edit company</span>
+</div>
+
+<div class="add-company mat-card" *ngIf="company">
+  <div class="form">
+
+    <mat-form-field>
+      <input matInput placeholder="Company name" [(ngModel)]="company.name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Company address" [(ngModel)]="company.address">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Company country" [(ngModel)]="company.country">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Company ceo" [(ngModel)]="company.ceo">
+    </mat-form-field>
+         
+    <mat-form-field>
+      <input matInput placeholder="Etablished year" [(ngModel)]="company.establishedYear">
+    </mat-form-field>
+
+    <mat-form-field >
+      <mat-select placeholder="Company size"  [(value)]="company.sizeCompany">
+        <mat-option value="{{size}}" *ngFor="let size of sizes">{{size}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="add">
+        <button matInput mat-raised-button mat-dialog-close (click)="saveCompany()">Save</button>
+    </div>
+  
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.header{
+    background: #ffffff;
+    span{
+        color: #ff4081;
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
+.add-company {
+    margin-top: 30px;
+    .form{
+        display: flex;
+        flex-direction: column;
+        ::ng-deep .mat-form-field-underline .mat-form-field-ripple{
+            background-color:#ff4081;
+        }
+        
+        ::ng-deep .mat-focused label{
+            color: #ff4081;
+        }
+        ::ng-deep span.mat-option-text{
+            color: #ff4081!important;
+        }
+        button{
+            background-color: #ff4081;
+            color: #ffffff;
+        }
+    }
+}
+  

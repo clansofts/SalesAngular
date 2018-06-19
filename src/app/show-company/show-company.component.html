@@ -1,0 +1,30 @@
+
+<div class="header">
+  <span>Company card</span>
+</div>
+
+<mat-card *ngIf="company">
+  <mat-list>
+    <mat-list-item>
+      <h4 mat-line><span>Name:</span> {{company.name}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Address:</span> {{company.address}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Country:</span> {{company.country}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Size:</span> {{company.sizeCompany}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Established year:</span> {{company.establishedYear}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line><span>Ceo:</span> {{company.ceo}}</h4>
+    </mat-list-item>
+    <mat-list-item>
+      <button *ngIf="company" mat-dialog-close mat-raised-button (click)="deleteCompany(company.id)" color="warn" class="delete">Delete</button>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

@@ -14,7 +14,7 @@ export class EditCustomerComponent implements OnInit {
   companys :Array<Company>;
   selected :string ;
   constructor(private companysService : CompanysService , private customersService : CustomersService) {
-    this.companysService.getCompanys();
+    this.companysService.get();
     this.companys = this.companysService.companys;
     this.companysService.companysObservable.subscribe((data)=>{
       this.companys = data;

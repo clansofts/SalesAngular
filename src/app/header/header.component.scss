@@ -10,8 +10,12 @@
     span{
         font-size: 19px;
         margin-right: 35px;
+        cursor: pointer;
     }
-    .btns{
+    span:hover{
+        font-weight: bold
+    }
+    .btns,.btns2{
         float: right;
         margin-top: -5.8px;
         button {
@@ -38,12 +42,12 @@
         }
         .create{
             background: #fff;
-            border: 2px solid #1ECD97;
-            color: #1ECD97;
+            border: 2px solid #ff4081;
+            color: #ff4081;
         }
         .create:hover {
             color: white;
-            background: #1ECD97;
+            background: #ff4081;
         }
         i{
             font-size: 16px;
@@ -52,9 +56,25 @@
             font-weight: bold;
         }
     }
+    .btns2{
+        .create{
+            background: #fff;
+            border: 2px solid #a164ff;
+            color: #a164ff;
+        }
+        .create:hover {
+            color: white;
+            background: #a164ff;
+        }
+    }
     
     .curPage{
-        border-bottom: 1.5px solid #1f3aa9;
+        border-bottom: 2px solid #a164ff;
+        padding-bottom: 1.5px;
+    }
+    .curPage1{
+        border-bottom: 2px solid #ff4081;
+        padding-bottom: 1.5px;
     }
 }
 *{

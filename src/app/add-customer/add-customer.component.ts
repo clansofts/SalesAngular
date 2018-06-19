@@ -14,7 +14,7 @@ export class AddCustomerComponent implements OnInit {
   customer: Customer =new Customer();
   companys :Array<Company>;
   constructor(private companysService : CompanysService, private customersService : CustomersService, private router : Router) { 
-      this.companysService.getCompanys();
+      this.companysService.get();
       this.companys = this.companysService.companys;
       this.companysService.companysObservable.subscribe((data)=>{
       this.companys = data;

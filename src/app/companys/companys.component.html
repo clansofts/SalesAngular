@@ -1,0 +1,68 @@
+<div class="dataTable mat-card" *ngIf="dataSource">
+
+  <mat-form-field class="select">
+    <mat-select placeholder="Filter all" [(value)]="selectedFilter" (selectionChange)="filterAll()">
+      <mat-option value="name">By Name</mat-option>
+      <mat-option value="ceo">By Ceo</mat-option>
+      <mat-option value="country">By Country</mat-option>
+      <mat-option value="establishedYear">By Established year</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="filters">
+    <mat-form-field>
+      <mat-icon matSuffix>search</mat-icon>
+      <input matInput (keyup)="filterAll()" [(ngModel)]="selectedValue" placeholder="Start typing to search">
+    </mat-form-field>
+    <mat-icon matSuffix class="clear cursor" mat-raised-button matTooltip="Clear all filters" (click)="clearAll()">clear</mat-icon>
+  </div>
+
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Company name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> Country </th>
+      <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sizeCompany">
+      <th mat-header-cell *matHeaderCellDef> Company size </th>
+      <td mat-cell *matCellDef="let element"> {{element.sizeCompany}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="establishedYear">
+      <th mat-header-cell *matHeaderCellDef> Established year </th>
+      <td mat-cell *matCellDef="let element"> {{element.establishedYear}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ceo">
+      <th mat-header-cell *matHeaderCellDef> Ceo </th>
+      <td mat-cell *matCellDef="let element"> {{element.ceo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="last_td">
+          <i class="material-icons" mat-raised-button matTooltip="Edit this company" (click)="openEditCompany(element)">create</i>
+          <i class="material-icons" mat-raised-button matTooltip="Show this company" (click)="openShowCompany(element)">remove_red_eye</i>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

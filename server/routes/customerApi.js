@@ -76,7 +76,7 @@ router.put('/', (req, res) => {
 router.get('/search', (req, res) => { 
   Customer.search(req.query).then( (data)=>{
     res.send(JSON.stringify(data));
-  } );
+  });
 });
 
 module.exports = router

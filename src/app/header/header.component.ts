@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AddCustomerComponent } from '../add-customer/add-customer.component';
 import { MatDialog } from '@angular/material';
 import { CustomersService } from '../customers.service';
+import { CompanysService } from '../companys.service';
+import { AddCompanyComponent } from '../add-company/add-company.component';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,7 @@ import { CustomersService } from '../customers.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private customersService : CustomersService , private router : Router, public dialog: MatDialog) {}
+  constructor(private companysService : CompanysService ,private customersService : CustomersService , private router : Router, public dialog: MatDialog) {}
 
   ngOnInit() {}
 
@@ -20,6 +22,37 @@ export class HeaderComponent implements OnInit {
       height: '540px',
       width:'460px'
     });
+  }
+  
+  openAddCompany() {
+    const dialogRef = this.dialog.open(AddCompanyComponent, {
+      height: '600px',
+      width:'460px'
+    });
+  }
+
+  exportCompanysToCsv(){
+    let csvContent = "data:text/csv;charset=utf-8,";
+    let row = " ID , Name , Address , Country , Size company , Established year , Ceo ";
+    csvContent += row + "\r\n";
+    console.log(this.companysService.companys);
+    
+    this.companysService.companys.forEach(function(rowArray){
+      row = rowArray.id + "," +
+            rowArray.name + "," +
+            rowArray.address + "," +
+            rowArray.country + "," + 
+            rowArray.sizeCompany + "," +
+            rowArray.establishedYear + "," +
+            rowArray.ceo;
+      csvContent += row + "\r\n";
+    }); 
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "companys.csv");
+    document.body.appendChild(link); // Required for FF
+    link.click(); 
   }
 
   exportCustomersToCsv(){
@@ -42,5 +75,4 @@ export class HeaderComponent implements OnInit {
     document.body.appendChild(link); // Required for FF
     link.click(); 
   }
-
 }

@@ -45,3 +45,13 @@
     color: #1f3aa9;
     font-weight: bold;
 }
+
+::ng-deep span.mat-option-text{
+    color: #a164ff!important;
+}
+::ng-deep .mat-form-field-underline .mat-form-field-ripple{
+    background-color:#a164ff!important;
+}
+::ng-deep .mat-focused label{
+    color: #a164ff!important;
+}
