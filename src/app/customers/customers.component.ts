@@ -20,7 +20,7 @@ export class CustomersComponent implements OnInit {
   selectedFilter : string = "firstName";
   selectedValue : string = "";
   constructor(private customersService : CustomersService,public dialog: MatDialog , public snackBar: MatSnackBar) {
-    this.customersService.customersObservable.subscribe((data)=>{
+    this.customersService.itemObservable.subscribe((data)=>{
       this.customers = data;
       this.dataSource = new MatTableDataSource<Customer>(this.customers);
     });

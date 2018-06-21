@@ -3,7 +3,7 @@
     <span routerLink="./">AngulSales</span>
     <span routerLink [ngClass]="{'curPage': router.url == '/'}">Home</span>
     <span routerLink="/companys-page" [ngClass]="{'curPage1': router.url == '/companys-page'}">Companys</span>
-    <span routerLink="/customers-page" [ngClass]="{'curPage': router.url == '/customers-page'}">Customers</span>
+    <span routerLink="/customers-page" [ngClass]="{'curPage2': router.url == '/customers-page'}">Customers</span>
     <div class="btns2" *ngIf="(router.url == '/customers-page')">
       <button class="export" (click)="exportCustomersToCsv()"><i class="material-icons">save_alt</i>Export to CSV</button>
       <button class="create" (click)="openAddCustomer()"><i class="material-icons">add</i>Create Customer</button>

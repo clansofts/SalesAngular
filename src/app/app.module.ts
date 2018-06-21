@@ -21,6 +21,9 @@ import { CompanysComponent } from './companys/companys.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { ShowCompanyComponent } from './show-company/show-company.component';
 import { EditCompanyComponent } from './edit-company/edit-company.component';
+import { BaseService } from './base.service';
+import { CompanysService } from './companys.service';
+import { CustomersService } from './customers.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +62,7 @@ import { EditCompanyComponent } from './edit-company/edit-company.component';
     MatPaginatorModule
   ],
     
-  providers: [],
+  providers: [BaseService , CompanysService , CustomersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

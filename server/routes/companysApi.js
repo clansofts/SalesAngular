@@ -21,7 +21,7 @@ router.get('/search', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  var company = req.body.company;
+  var company = req.body.item;
 
   Company.create(company).then((data) => {
     Company.find(data.id).then((data)=>{
@@ -56,7 +56,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/', (req, res) => {
-  var company = req.body.company;
+  var company = req.body.item;
 
   Company.update(company).then((data) => {
     Company.find_all().then( (data)=>{

@@ -18,7 +18,7 @@ export class CompanysComponent implements OnInit {
   selectedFilter : string = "name";
   selectedValue : string = "";
   constructor(private companysService : CompanysService ,public dialog: MatDialog , public snackBar: MatSnackBar) {
-    this.companysService.companysObservable.subscribe((data)=>{
+    this.companysService.itemObservable.subscribe((data)=>{
       this.companys = data;
       this.dataSource = new MatTableDataSource<Company>(this.companys);
     });
