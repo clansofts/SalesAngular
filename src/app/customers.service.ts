@@ -6,13 +6,14 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CustomersService extends BaseService<Customer>{
   customer = new Customer();
   route : string;
 
   constructor(http : HttpClient) {
     super(http);
-    this.route = "customers";
+    this.route = "customers"; //change the route for http request
   }
 
   setChild(customer : Customer): void {

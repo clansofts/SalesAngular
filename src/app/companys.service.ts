@@ -12,7 +12,7 @@ export class CompanysService extends BaseService<Company>{
 
   constructor(http : HttpClient) {
     super(http);
-    this.route = "companys";
+    this.route = "companys"; //change the route for http request
   }
   
   setChild(company : Company): void {

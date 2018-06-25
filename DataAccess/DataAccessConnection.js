@@ -1,10 +1,16 @@
 var Sequelize = require('sequelize');
 
+// database credentials
+const DBHOST = 'localhost';
+const DBUSER = 'root';
+const DBPASS = '';
+const DBNAME = 'angusales';
+
 class DataAccess {
 
     constructor() {
-      this.connection = new Sequelize('angusales', 'root', '', {
-        host: 'localhost',
+      this.connection = new Sequelize( DBNAME , DBUSER , DBPASS , {
+        host: DBHOST ,
         dialect: 'mysql',
         operatorsAliases: false, // prevent string deprication
         pool: { // You can read about the pool in the documentation
@@ -22,6 +28,7 @@ class DataAccess {
   
   }
   
+  //create a connection to the DB
   const da = new DataAccess();
   module.exports = da;
   
